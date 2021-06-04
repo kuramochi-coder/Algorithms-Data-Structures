@@ -1,4 +1,4 @@
-
+# Count Number of Teams
 # There are n soldiers standing in a line. Each soldier is assigned a unique rating value.
 # You have to form a team of 3 soldiers amongst them under the following rules:
 # Choose 3 soldiers with index (i, j, k) with rating (rating[i], rating[j], rating[k]).

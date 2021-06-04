@@ -1,3 +1,5 @@
+# Given a list of strings
+# Determine if the words can be chained to form a circle using the first and last characters
 
 import collections
 

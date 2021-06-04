@@ -1,3 +1,6 @@
+# Max Connected Colors in a Grid
+# Given a mxn grid, set of different colored boxes in the grid
+# Find the maximum number of connected colors in the grid
 
 class Grid:
     def __init__(self, grid):
