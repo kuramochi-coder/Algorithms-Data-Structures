@@ -8,12 +8,15 @@ class Solution:
         
         if strs is None or len(strs) == 0:
             return result
-        
+
+        # for char in first word strs[0] in list of strings, compare against the next word strs[1] onwards
+        # if index exceeds length of the string we are comparing to or the characters do not match, return 
         for char in strs[0]:
             for i in range(1, len(strs)):
                 if index >= len(strs[i]) or char != strs[i][index]:
                     return result
                 
+            # if char matches for all the words in list, we can add it to result
             result += char
             index += 1
         
