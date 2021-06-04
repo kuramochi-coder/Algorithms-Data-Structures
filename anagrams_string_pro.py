@@ -16,7 +16,7 @@ def find_anagrams(a, b):
     for i in range(len(a)):
         c = a[i] # get char in a
 
-        # remove characters from the char_map as we are sliding it along
+        # remove characters from the char_map as we are sliding it along (sliding window)
         # c_old is the char that is beyond the length of b, so we remove that from char_map by increasing the count by 1
         if i >= len(b):
             c_old = a[i - len(b)]
