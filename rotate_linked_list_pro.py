@@ -33,6 +33,8 @@ def rotate(node, n):
         slow = slow.next
         fast = fast.next
 
+    # 1 2 3 4 5. fast at the end (node 5) must point back to beginning at node 1, slow at node 3 is the new end
+    # node 4 is the new head
     fast.next = node
     head = slow.next
     slow.next = None
