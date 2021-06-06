@@ -41,7 +41,7 @@ STATE_VALIDATOR = {
 }
 
 NEXT_STATES_MAP = {
-    DigitState.BEGIN: [DigitState.NEGATIVE1, DigitState.DIGIT1],
+    DigitState.BEGIN: [DigitState.NEGATIVE1, DigitState.DIGIT1, DigitState.DOT],
     DigitState.NEGATIVE1: [DigitState.DIGIT1, DigitState.DOT],
     DigitState.DIGIT1: [DigitState.DIGIT1, DigitState.DOT, DigitState.E],
     DigitState.DOT: [DigitState.DIGIT2],
@@ -73,3 +73,6 @@ print(parse_number('12.3'))
 
 print(parse_number('12a'))
 # False
+
+print(parse_number('.123'))
+# True
