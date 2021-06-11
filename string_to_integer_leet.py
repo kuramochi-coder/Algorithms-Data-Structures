@@ -50,3 +50,7 @@ class Solution:
         return result
 
 print(Solution().myAtoi("4193 with words"))
+# 4193
+print('---')
+print(Solution().myAtoi("   -42"))
+# -42
