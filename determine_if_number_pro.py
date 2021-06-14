@@ -67,12 +67,28 @@ def parse_number(str):
 
     return state in [DigitState.DIGIT1, DigitState.DIGIT2, DigitState.DIGIT3]
 
+# solution below is simple but might not be accepted by interviewers
+def isNumber(s):
+        list1 = ['inf', '-inf', '+inf', 'infinity', '+infinity', '-infinity', 'Infinity', '+Infinity', '-Infinity']
+        if s in list1:
+            return False
+        try:
+            s = float(s)
+            return True
+        except ValueError:     
+            return False
+
 
 print(parse_number('12.3'))
 # True
-
 print(parse_number('12a'))
 # False
-
 print(parse_number('.123'))
+# True
+print('---')
+print(isNumber('12.3'))
+# True
+print(isNumber('12a'))
+# False
+print(isNumber('.123'))
 # True
