@@ -27,6 +27,26 @@ class Solution:
         c = collections.Counter(list(frequency.values()))[m]    # how many tasks do we have at that max frequency
         return max(len(tasks), (m-1)*(n+1)+c)
 
+class Solution2:
+    def leastInterval(self, tasks, n):
+        if n==0:                                              
+            return len(tasks)
+
+        frequency = {}
+        for task in tasks:
+            frequency[task] = frequency.get(task, 0) + 1
+
+        m = max(frequency.values()) # what is the freq of the most frequent task
+
+        tasks_max_freq = []
+        for task, freq in frequency.items():
+            if freq == m:
+                tasks_max_freq.append(task)
+        
+        c = len(tasks_max_freq) # how many tasks do we have at that max frequency
+
+        return max(len(tasks), (m-1)*(n+1)+c) 
+
 def findTime(tasks, cooldown):
     lastPos = {}
     current = 0
@@ -62,6 +82,8 @@ def findTime2(tasks, cooldown):
     return sim_time + task_run_time
 
 print(Solution().leastInterval([1, 1, 2, 1], 2))
+# 7
+print(Solution2().leastInterval([1, 1, 2, 1], 2))
 # 7
 print(findTime([1, 1, 2, 1], 2))
 # 7
