@@ -4,13 +4,28 @@
 # For each unit of time, the CPU could complete either one task or just be idle.
 # However, there is a non-negative integer n that represents the cooldown period between two same tasks (the same letter in the array), that is that there must be at least n units of time between any two same tasks.
 # Return the least number of units of times that the CPU will take to finish all the given tasks.
-
 # Input: tasks = ["A","A","A","B","B","B"], n = 2
 # Output: 8
 # Explanation: 
 # A -> B -> idle -> A -> B -> idle -> A -> B
 # There is at least 2 units of time between any two same tasks.
 
+
+# Others suggested the same algo, so this is the Python version.
+# Rationale: Start with a single task with frequency m=3 (["A", "A", "A"]) and n=2. We simply need (m-1) * (n+1)+1: "A--A--A". It is m-1 sequences of n+1 length, and then the last task.
+# Next:
+# If A is not the only longest, e.g. AAABBBCCC, we will need +3 in the end rather than +1.
+# We cannot go shorter than len(tasks), for the case of AAABCDEFGHI, hence the max in the last line.
+
+class Solution:
+    def leastInterval(self, tasks, n):
+        if n==0:                                               # not important, just saves a bit of time
+            return len(tasks)
+        import collections
+        frequency = collections.Counter(tasks)
+        m = max(frequency.values())                             # what is the freq of the most frequent task
+        c = collections.Counter(list(frequency.values()))[m]    # how many tasks do we have at that max frequency
+        return max(len(tasks), (m-1)*(n+1)+c)
 
 def findTime(tasks, cooldown):
     lastPos = {}
@@ -46,6 +61,8 @@ def findTime2(tasks, cooldown):
     
     return sim_time + task_run_time
 
+print(Solution().leastInterval([1, 1, 2, 1], 2))
+# 7
 print(findTime([1, 1, 2, 1], 2))
 # 7
 print(findTime2([1, 1, 2, 1], 2))
