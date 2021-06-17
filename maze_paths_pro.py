@@ -8,7 +8,6 @@ def paths_through_maze(maze):
     paths = [[0] * len(maze[0]) for _ in range(len(maze))]
     paths[0][0] = 1
     for i, row in enumerate(maze):
-        print(i, row)
         for j, val in enumerate(row):
             if val == 1 or (i == 0 and j == 0):
                 continue
