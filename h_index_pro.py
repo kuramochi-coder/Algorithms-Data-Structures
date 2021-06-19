@@ -17,6 +17,15 @@ def hIndex(pubs):
         i -= 1
     return 0
 
+def hindex2(pubs):
+    pubs = sorted(pubs, key=lambda x: -x)
+    for i in range(len(pubs)):
+        if pubs[i] <= i:
+            return i
+    return 0
+
 
 print(hIndex([5, 3, 3, 1, 0]))
+# 3
+print(hindex2([5, 3, 3, 1, 0]))
 # 3
