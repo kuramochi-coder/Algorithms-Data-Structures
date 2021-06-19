@@ -16,8 +16,17 @@ def searchMatrix(mat, value):
         if mid_value < value:
             low = mid + 1
         else:
-            high = mid
+            high = mid - 1
 
+    return False
+
+def searchMatrixBruteForce(mat, value):
+
+    for row in range(len(mat)):
+        for col in range(len(mat[0])):
+            if mat[row][col] == value:
+                return True
+    
     return False
 
 
@@ -31,4 +40,10 @@ print(searchMatrix(mat, 4))
 # False
 
 print(searchMatrix(mat, 10))
+# True
+
+print(searchMatrixBruteForce(mat, 4))
+# False
+
+print(searchMatrixBruteForce(mat, 10))
 # True
