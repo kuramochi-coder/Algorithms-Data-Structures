@@ -37,6 +37,7 @@ def find_anagrams(a, b):
 
     return results
 
+# my solution
 def find_permutation(str1, pattern):
   start = 0
   char_map = {}
