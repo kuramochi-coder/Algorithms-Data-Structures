@@ -37,6 +37,38 @@ def find_anagrams(a, b):
 
     return results
 
+def find_permutation(str1, pattern):
+  start = 0
+  char_map = {}
+  result = []
+
+  # add all characters in pattern to the hash map
+  for s in pattern:
+    char_map[s] = char_map.get(s, 0) + 1
+
+  for end in range(len(str1)):
+    right_char = str1[end]
+    # for every character seen in str1 we decrement the count in the hash map
+    char_map[right_char] = char_map.get(right_char, 0) - 1
+    if char_map[right_char] == 0:
+      del char_map[right_char]
+
+    # slide the window when the number of characters in our sliding window has hit the length limit 
+    if end >= len(pattern) - 1:
+      # if length of character map is zero then we have matched all the characters in the pattern
+      if len(char_map) == 0:
+        result.append(start)
+      # begin to slide the window by taking note of the character exiting the window
+      start_char = str1[start]
+      char_map[start_char] = char_map.get(start_char, 0) + 1 # add back the count to the char map when sliding out
+      if char_map[start_char] == 0:
+        del char_map[start_char]
+      start += 1 # slide the window ahead
+  
+  return result
 
 print(find_anagrams('acdbacdacb', 'abc'))
+# [3, 7]
+
+print(find_permutation('acdbacdacb', 'abc'))
 # [3, 7]
