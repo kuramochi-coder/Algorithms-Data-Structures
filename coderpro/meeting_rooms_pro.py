@@ -10,9 +10,9 @@ def meeting_rooms(meetings):
 
     for meeting in meetings:
         # The heap[0] element also returns the smallest element each time.
-        while meeting_ends and meeting_ends[0] <= meeting[0]:
+        while meeting_ends and meeting_ends[0] <= meeting[0]: # while the end time in the heap is smaller than or equal to the next start time, it meaans the meeting has ended and we can remove it from the heap
             heapq.heappop(meeting_ends)
-        print(meeting_ends)
+        # print(meeting_ends)
         heapq.heappush(meeting_ends, meeting[1])
         print(meeting_ends)
         max_rooms = max(max_rooms, len(meeting_ends))
