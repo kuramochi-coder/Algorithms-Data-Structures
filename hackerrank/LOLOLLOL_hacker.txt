@@ -1,0 +1,31 @@
+BTW Enter your code here. Read input from STDIN. Print output to STDOUT
+
+HAI 1.2
+    I HAS A ENDP ITZ A NUMBR
+    GIMMEH ENDP
+    ENDP IS NOW A NUMBR
+        
+    I HAS A STARTP ITZ 0
+    IM IN YR LOOP UPPIN YR STARTP TIL BOTH SAEM STARTP AN ENDP
+        I HAS A EMO ITZ A YARN
+        GIMMEH EMO
+        
+        EMO, WTF?
+           OMG ":)"
+              VISIBLE "HAPI"
+              GTFO
+           OMG ":("
+              VISIBLE "SADZ"
+              GTFO
+           OMG ":\"
+              VISIBLE "HUH"
+              GTFO
+           OMG ":D"
+              VISIBLE "LOL"
+              GTFO
+           OMGWTF
+              VISIBLE "IDK"
+              GTFO
+        OIC
+    IM OUTTA YR LOOP
+KTHXBYE
