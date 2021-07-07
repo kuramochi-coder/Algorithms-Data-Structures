@@ -1,6 +1,6 @@
 import fileinput
 
-input_arr = [5,2,3]
+input_arr = [[3, 1, 2], [5, 2, 3]]
 
 def readInput():
     for line in fileinput.input():
@@ -25,6 +25,8 @@ def barChart(points):
     
         
             
+# readInput()
+# print(input_arr)
 barChart(input_arr)
 
         
