@@ -1,0 +1,54 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+  
+int main()
+{
+    int column_values[80] = {0};
+
+    int col = 0;
+    int total_cols = 0;        
+    int num;
+    int max_col = 0;
+
+    string line;
+
+    // Get the string
+    bool end = false;
+    while (!end){
+        getline(cin, line);
+        stringstream ss(line);
+        if(line.length() == 0){
+            break;
+        }
+        col = 0;
+        while(true){
+            ss >> num;
+            max_col = num > max_col ? num : max_col;
+            column_values[col] = num > column_values[col] ? num : column_values[col];
+            col++;
+            
+            if (ss.peek() == ','){
+                ss.ignore();        
+            }  else if (ss.peek() == EOF){
+                total_cols = col;
+                break;  
+            } else {
+               total_cols = col;
+                break;
+            } 
+        }    
+    }
+    
+    for(int i=max_col; i > 0 ; i--){
+        for (int j=0; j < total_cols ; j++){
+            if(column_values[j] == i){
+                cout << "+";
+                column_values[j]--;
+            } else {
+                cout << " ";
+            }
+        }
+        cout << endl;
+    }
+}

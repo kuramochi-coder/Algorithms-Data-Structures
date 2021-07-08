@@ -1,0 +1,111 @@
+from itertools import accumulate, chain
+from typing import Sequence, Optional, List, Tuple, Dict, Any
+
+
+splits: List[Any] = []
+pairTotals: List[Any] = []
+cumulatives: List[Tuple[int, int]] = []
+worstCompanions: List[int] = []
+sumAll: int = 0
+
+
+class Pair:
+
+    @staticmethod
+    def sortPairs():
+        splits.sort(key=lambda p: p.c0)
+        for i, p in enumerate(splits):
+            p.c0Index = i
+        pairTotals.sort(key=lambda p: p.c0 + p.c1)
+
+    @staticmethod
+    def getCumulatives():
+        splitsIndex = 0
+        sumAll = 0
+        worstCompanion = 0
+        worstCompanions.append(worstCompanion)
+        cumulatives.append((sumAll, splits[splitsIndex].c0))
+        for p in pairTotals[:-1]:
+            sumAll += p.c0 + p.c1
+            worstCompanion = max(worstCompanion, p.c1)
+            p.used = True
+            while splits[splitsIndex].used:
+                splitsIndex += 1
+            cumulatives.append((sumAll, splits[splitsIndex].c0))
+            worstCompanions.append(worstCompanion)
+        sumAll += pairTotals[-1].c0 + pairTotals[-1].c1
+        cumulatives.append((sumAll, 0))
+        worstCompanion = max(worstCompanion, pairTotals[-1].c1)
+        worstCompanions.append(worstCompanion)
+
+    def __init__(self, name, c0, c1):
+        self.name = name
+        self.c0 = c0
+        self.c1 = c1
+        self.c0Index = None
+        self.used = False
+        splits.append(self)
+        pairTotals.append(self)
+
+
+N, F = (int(x) for x in input().split())
+
+if N == F:
+    total = 0
+    for t in range(N):
+        _, C = input().split()
+        total += int(C)
+    print(total)
+else:
+    singles: List[int] = []
+    doubles: Dict[str, List[Optional[int]]] = {}
+    for t in range(N):
+        name, C = input().split()
+        C = int(C)
+        if name.endswith("+0"):
+            name = name[:-2]
+            if name not in doubles:
+                doubles[name] = [None, None]
+            doubles[name][0] = C
+        elif name.endswith("+1"):
+            name = name[:-2]
+            if name not in doubles:
+                doubles[name] = [None, None]
+            doubles[name][1] = C
+        else:
+            singles.append(C)
+
+    for name in doubles:
+        c0, c1 = doubles[name]
+        if c0 <= c1:
+            singles.append(c0)
+            singles.append(c1)
+        else:
+            Pair(name, c0, c1)
+
+    singles.sort()
+    cumulativeSingles = list(chain([0], accumulate(singles)))
+
+    if len(pairTotals) == 0:
+        print(cumulativeSingles[F])
+    else:
+        Pair.sortPairs()
+        Pair.getCumulatives()
+
+        start = max((F - len(singles)) // 2, 0)
+        end = min(F // 2, len(pairTotals) - 1)
+        best = 250000000000
+
+        for i in range(start, end+1):
+            pairsSum, splitSum = cumulatives[i]
+            if len(cumulativeSingles) > F - i*2:
+                score0 = pairsSum + cumulativeSingles[F - i*2]
+            else:
+                score0 = 250000000000
+            score1 = pairsSum + cumulativeSingles[F - i*2 - 1] + splitSum
+            score2 = cumulatives[i+1][0] - worstCompanions[i+1] + cumulativeSingles[F - i*2 - 1]
+            best = min(best, score0, score1, score2)
+        if len(pairTotals) * 2 <= F:
+            best = min(best, cumulatives[-1][0] + cumulativeSingles[F - len(pairTotals) * 2])
+        print(best)
+

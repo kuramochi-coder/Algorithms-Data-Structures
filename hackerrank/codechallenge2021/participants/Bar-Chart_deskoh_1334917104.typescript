@@ -1,0 +1,47 @@
+import readline = require('readline');
+
+export const echo = (data: string): string => data;
+
+let colMax: number[];
+
+const rl = readline.createInterface({
+  input: process.stdin,
+});
+
+// Buffer output until `end()` is called
+// See https://nodejs.org/api/stream.html#stream_writable_cork
+process.stdout.cork();
+
+rl.on('line', (line) => {
+  const row = line.split(',').map(i => parseInt(i, 10));
+  updateMax(row);
+});
+
+rl.on('close', () => {
+  renderBarChart(colMax);
+  process.stdout.end();
+});
+
+function updateMax(row: number[]) {
+  if (colMax === undefined) {
+    colMax = row;
+    return;
+  }
+
+  for (let i = 0; i < row.length; i++)  {
+    if (row[i] > colMax[i]) colMax[i] = row[i];
+  }
+}
+
+function renderBarChart(colMax: number[]) {
+  const height = Math.max(...colMax);
+
+  for (let row = height; row >= 1; row--) {
+    for (let col = 0; col < colMax.length; col++) {
+      const printPixel = (colMax[col] >= row);
+      process.stdout.write(`${printPixel ? '+' : ' '}`);
+    }
+    process.stdout.write('\n');
+  }
+}
+

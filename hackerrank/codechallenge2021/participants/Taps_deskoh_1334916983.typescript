@@ -1,0 +1,27 @@
+process.stdin.resume();
+process.stdin.setEncoding('ascii');
+
+function processData(lines: string[]) {
+  const n = parseInt(lines[0]);
+
+  // Rate of filling (tank / minutes)
+  let rate = 0;
+  for (let i = 1; i <= n; i++) {
+    rate += 1.0 / parseInt(lines[i]);
+  }
+
+  const timeTakenInSecs = 1.0 / rate * 60;
+
+  process.stdout.write(`${Math.round(timeTakenInSecs)}\n`);
+}
+
+let input = '';
+process.stdin.on('data', function (data) {
+  input += data;
+});
+
+process.stdin.on('end', function () {
+ const lines = input.trim().split('\n').map(str => str.trim());
+ processData(lines);
+});
+

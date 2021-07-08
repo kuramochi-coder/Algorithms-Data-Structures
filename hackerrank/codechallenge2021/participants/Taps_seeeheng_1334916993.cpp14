@@ -1,0 +1,24 @@
+#include <cmath>
+#include <cstdio>
+#include <vector>
+#include <iostream>
+#include <algorithm>
+using namespace std;
+
+void combinedRateFormula(int n_pipes){
+    float current_rate, total_rate;
+    for (int i=0; i<n_pipes; i++){
+        std::cin >> current_rate;
+        total_rate += (1/current_rate);
+    }
+    std::cout << 60/total_rate;
+}
+
+int main() {
+    /* Enter your code here. Read input from STDIN. Print output to STDOUT */
+    int n;
+    std::cin >> n;
+    combinedRateFormula(n);
+    return 0;
+}
+

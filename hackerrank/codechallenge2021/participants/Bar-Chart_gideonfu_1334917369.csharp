@@ -1,0 +1,57 @@
+using System;
+using System.Collections.Generic;
+using System.IO;
+class Solution {
+    static void Main(String[] args) {
+        /* Enter your code here. Read input from STDIN. Print output to STDOUT. Your class should be named Solution */
+        string input;
+        List<string> inputs = new List<string>();
+        while ((input = Console.ReadLine()) != null && input != "")
+        {
+            inputs.Add(input);
+        }
+
+        string[] nums = inputs[0].Split(',');
+        int[] maxInt = new int[nums.Length];
+
+        foreach(string i in inputs)
+        {
+            string[] numbers = i.Split(',');
+            for(int j=0; j<maxInt.Length; j++)
+            {
+                int num = Convert.ToInt32(numbers[j]);
+                if(num > maxInt[j])
+                {
+                    maxInt[j] = num;
+                }
+            }
+        }
+
+        int highestNum = 0;
+        for (int i = 0; i < maxInt.Length; i++) {
+            if(maxInt[i] > highestNum)
+            {
+                highestNum = maxInt[i];
+            }
+        }
+        
+        System.Text.StringBuilder sb = new System.Text.StringBuilder();
+        for (int i = 0; i < highestNum; i++)
+        {
+            sb.Clear();
+            for (int j = 0; j < maxInt.Length; j++)
+            {
+                if ((highestNum - maxInt[j]) <= i)
+                {
+                    sb.Append("+");
+                }
+                else
+                {
+                    sb.Append(" ");
+                }
+            }
+
+            Console.WriteLine(sb);
+        }
+    }
+}

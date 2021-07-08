@@ -1,0 +1,24 @@
+HAI 1.2
+    I HAS A N ITZ A NUMBR
+    I HAS A S ITZ A YARN
+    GIMMEH N
+    N R MAEK N A NUMBR
+    I HAS A CTR ITZ A NUMBR
+    CTR R 0
+    IM IN YR LOOPY UPPIN YR CTR TIL BOTH SAEM CTR AN N
+        GIMMEH S
+        BOTH SAEM S AN ":)"
+        O RLY?
+            YA RLY
+                VISIBLE "HAPI"
+            MEBBE BOTH SAEM S AN ":("
+                VISIBLE "SADZ"
+            MEBBE BOTH SAEM S AN ":\"
+                VISIBLE "HUH"
+            MEBBE BOTH SAEM S AN ":D"
+                VISIBLE "LOL"
+            NO WAI
+                VISIBLE "IDK"
+        OIC
+    IM OUTTA YR LOOPY
+KTHXBYE

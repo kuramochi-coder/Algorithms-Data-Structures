@@ -1,0 +1,27 @@
+HAI 1.2
+
+I HAS A Num
+I HAS A Str
+GIMMEH Num
+Num IS NOW A NUMBR
+IM IN YR LOOP UPPIN YR i TIL BOTH SAEM i AN Num
+  GIMMEH Str
+  Str, WTF?
+   OMG ":)"
+     VISIBLE "HAPI"
+     GTFO
+   OMG ":("
+     VISIBLE "SADZ"
+     GTFO
+   OMG ":\"
+     VISIBLE "HUH"
+     GTFO
+   OMG ":D"
+     VISIBLE "LOL"
+     GTFO
+   OMGWTF
+     VISIBLE "IDK"
+  OIC
+IM OUTTA YR LOOP
+
+KTHXBYE
