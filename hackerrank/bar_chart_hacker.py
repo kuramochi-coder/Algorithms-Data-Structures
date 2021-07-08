@@ -33,13 +33,13 @@ def barChart(points):
         print(currentstring)
     print(result_array)
     
-    arr1 = np.array(result_array)
+    # arr1 = np.array(result_array)
 
-    print(f'Original Array:\n{arr1}')
+    # print(f'Original Array:\n{arr1}')
 
-    arr1_transpose = arr1.transpose()
+    # arr1_transpose = arr1.transpose()
 
-    print(f'Transposed Array:\n{arr1_transpose}')
+    # print(f'Transposed Array:\n{arr1_transpose}')
     
 
    
